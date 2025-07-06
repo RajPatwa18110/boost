@@ -91,8 +91,10 @@
 
         .logo img {
             width: 50px;
-            height: auto;
+            height: 50px; /* Ensure height matches width for circular shape */
             margin-right: 0.5rem;
+            border-radius: 50%; /* Make the logo circular */
+            object-fit: cover; /* Ensure the image fits within the circle */
         }
 
         .logo {
@@ -287,7 +289,7 @@
             box-shadow: var(--shadow);
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            animation: slideUp 0.5s ease-in-out;
+            animation: slideUp 0.5s ease-in-out;
             position: relative;
             overflow: hidden;
             border: 1px solid #eee;
@@ -671,6 +673,7 @@
 
             .logo img {
                 width: 40px;
+                height: 40px;
             }
 
             .hero h1 {
@@ -726,6 +729,7 @@
 
             .logo img {
                 width: 35px;
+                height: 35px;
             }
 
             .nav-menu a {
@@ -837,6 +841,7 @@
             </div>
             <nav class="nav-menu" id="navMenu">
                 <a href="#home" onclick="showSection('home')">Home</a>
+                <a href="#booster" onclick="showSection('booster')">Boost Now</a>
                 <a href="#services" onclick="showSection('services')">Services</a>
                 <a href="#contact" onclick="showSection('contact')">Contact</a>
             </nav>
@@ -872,12 +877,12 @@
 
         <section id="servicesSection">
             <h2>Our Services</h2>
-            <p>Elevate your brand with our tailored social media growth packages</p>
+            <p>Elevate your brand’s digital presence with our expertly tailored social media growth packages. Whether you want to enhance your Facebook visibility with targeted followers, likes, and views or expand your Instagram reach through cost-effective engagement solutions, we’ve got you covered. Looking to go viral on TikTok? Our affordable follower, like, and view boosting services are designed to help you capture attention and grow rapidly. Additionally, we drive real business growth with strategic Meta ad campaigns, compelling content creation, and eye-catching animation reels that leave a lasting impact. Partner with us to unlock your brand’s full potential across every platform.</p>
             <div class="services-grid">
                 <div class="service-item">
                     <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook">
                     <h3>Facebook Growth</h3>
-                    <p>Enhance your Facebook presence with targeted followers, likes, and views to boost engagement.</p>
+                   
                     <p><strong>Followers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.500/1000<br><strong>Views:</strong> Rs.150/1000</p>
                 </div>
                 <div class="service-item">
@@ -889,19 +894,19 @@
                 <div class="service-item">
                     <img src="https://img.icons8.com/color/48/000000/tiktok.png" alt="TikTok">
                     <h3>TikTok Growth</h3>
-                    <p>Go viral on TikTok with our affordable follower, like, and view boosting services.</p>
+                   
                     <p><strong>Followers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.100/1000<br><strong>Views:</strong> Rs.10/2000</p>
                 </div>
                 <div class="service-item">
                     <img src="https://img.icons8.com/color/48/000000/youtube-play.png" alt="YouTube">
                     <h3>YouTube Growth</h3>
-                    <p>Expand your YouTube channel with subscriber and like packages designed for growth.</p>
+                   
                     <p><strong>Subscribers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.500/1000</p>
                 </div>
                 <div class="service-item">
                     <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Meta Ads">
                     <h3>Meta Ads</h3>
-                    <p>Drive business growth with targeted Meta ad campaigns, content creation, and animation reels.</p>
+                   
                     <p><strong>Packages:</strong> Basic (Rs.3999), Standard (Rs.4999), Premium (Rs.6999)</p>
                 </div>
             </div>
@@ -956,18 +961,18 @@
                 <p style="font-weight: 500;">Meta Ads Boost Packages</p>
                 <div class="package-grid">
                     <div class="package-card">
-                        <h3>Basic</h3>
+                        <h3>Basic Package</h3>
                         <p class="price">Rs. 3999</p>
                         <ul>
                             <li>2 Ads Boosting</li>
                             <li>5-7 Content Posts</li>
-                            <li>2 Animation Reels</li>
+                            <li>2 Reels</li>
                             <li>Free Festival Posts</li>
                         </ul>
                         <button onclick="selectPackage('Basic Package', 3999)">Place Order</button>
                     </div>
                     <div class="package-card">
-                        <h3>Standard</h3>
+                        <h3>Standard Package</h3>
                         <p class="price">Rs. 4999</p>
                         <ul>
                             <li>3 Ads Boosting</li>
@@ -978,7 +983,7 @@
                         <button onclick="selectPackage('Standard Package', 4999)">Place Order</button>
                     </div>
                     <div class="package-card">
-                        <h3>Premium</h3>
+                        <h3>Premium Package</h3>
                         <p class="price">Rs. 6999</p>
                         <ul>
                             <li>5 Ads Boosting</li>
