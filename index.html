@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Boost Nepal - Social Media Growth">
     <meta name="keywords" content="social media, Nepal, followers, likes, views, Meta Ads">
     <link rel="icon" type="image/png" href="./assets/logo.png">
@@ -50,8 +50,8 @@
 
         .particle {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: rgba(255, 140, 0, 0.4);
             border-radius: 50%;
             animation: float linear infinite;
@@ -67,7 +67,7 @@
                 opacity: 0.9;
             }
             100% {
-                transform: translateY(-100vh) translateX(15px);
+                transform: translateY(-100vh) translateX(10px);
                 opacity: 0;
             }
         }
@@ -75,7 +75,7 @@
         header {
             background: #fff;
             box-shadow: var(--shadow);
-            padding: 1rem 1.5rem;
+            padding: 1rem clamp(0.5rem, 3vw, 1.5rem);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -87,14 +87,15 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         .logo img {
-            width: 50px;
-            height: 50px; /* Ensure height matches width for circular shape */
+            width: clamp(40px, 5vw, 50px);
+            height: clamp(40px, 5vw, 50px);
             margin-right: 0.5rem;
-            border-radius: 50%; /* Make the logo circular */
-            object-fit: cover; /* Ensure the image fits within the circle */
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         .logo {
@@ -103,7 +104,7 @@
         }
 
         .logo h1 {
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             font-weight: 700;
             color: var(--primary);
             cursor: pointer;
@@ -112,14 +113,15 @@
 
         .nav-menu {
             display: flex;
-            gap: 1.5rem;
+            gap: clamp(0.8rem, 2vw, 1.5rem);
+            flex-wrap: wrap;
         }
 
         .nav-menu a {
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             padding: 0.5rem 1rem;
             border-radius: var(--radius);
             transition: all 0.3s;
@@ -149,7 +151,7 @@
 
         .hamburger {
             display: none;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             cursor: pointer;
             color: var(--text);
         }
@@ -158,11 +160,11 @@
             flex: 1;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.5rem;
+            padding: clamp(1rem, 3vw, 1.5rem);
         }
 
         section {
-            min-height: 70vh;
+            min-height: 60vh;
             display: none;
         }
 
@@ -174,8 +176,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            max-width: 280px;
-            padding: 0.8rem;
+            max-width: clamp(200px, 40vw, 280px);
+            padding: clamp(0.6rem, 2vw, 0.8rem);
             border-radius: var(--radius);
             font-weight: 500;
             margin: 0.5rem auto;
@@ -192,21 +194,21 @@
         }
 
         .social-btn img {
-            width: 20px;
-            height: 20px;
+            width: clamp(16px, 3vw, 20px);
+            height: clamp(16px, 3vw, 20px);
             margin-right: 0.5rem;
         }
 
         .progress-bar {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: clamp(0.8rem, 2vw, 1rem);
             margin: 1.5rem 0;
         }
 
         .progress-step {
-            width: 2rem;
-            height: 2rem;
+            width: clamp(1.6rem, 4vw, 2rem);
+            height: clamp(1.6rem, 4vw, 2rem);
             background: #e0e0e0;
             color: var(--text);
             border-radius: 50%;
@@ -214,7 +216,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             transition: all 0.3s;
         }
 
@@ -224,7 +226,7 @@
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
@@ -233,7 +235,8 @@
         }
 
         p {
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            line-height: 1.6;
         }
 
         .step {
@@ -251,12 +254,12 @@
             justify-content: center;
             gap: 0.5rem;
             background: #fff;
-            padding: 0.8rem;
+            padding: clamp(0.6rem, 2vw, 0.8rem);
             margin: 0.5rem auto;
             border-radius: var(--radius);
             cursor: pointer;
             transition: all 0.3s;
-            max-width: 350px;
+            max-width: clamp(250px, 60vw, 350px);
             box-shadow: var(--shadow);
         }
 
@@ -268,14 +271,14 @@
         }
 
         .option img, .service-option img, .package-option img {
-            width: 20px;
-            height: 20px;
+            width: clamp(16px, 3vw, 20px);
+            height: clamp(16px, 3vw, 20px);
         }
 
         .package-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 45vw, 280px), 1fr));
+            gap: clamp(1rem, 3vw, 1.5rem);
             margin-top: 1.5rem;
             max-width: 1200px;
             margin-left: auto;
@@ -284,7 +287,7 @@
 
         .package-card {
             background: #fff;
-            padding: 1.5rem;
+            padding: clamp(1rem, 3vw, 1.5rem);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             text-align: center;
@@ -316,14 +319,14 @@
         }
 
         .package-card h3 {
-            font-size: 1.6rem;
+            font-size: clamp(1.4rem, 3.5vw, 1.6rem);
             font-weight: 600;
             color: var(--text);
             margin-bottom: 0.5rem;
         }
 
         .package-card p.price {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 1rem;
@@ -335,7 +338,7 @@
         }
 
         .package-card li {
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             color: var(--text);
             margin: 0.4rem 0;
             position: relative;
@@ -347,17 +350,17 @@
             position: absolute;
             left: 0;
             color: var(--primary);
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .package-card button {
             background: var(--gradient);
             color: #fff;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
             border-radius: var(--radius);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             cursor: pointer;
             transition: all 0.3s;
             width: 100%;
@@ -370,14 +373,14 @@
         }
 
         input, label {
-            max-width: 350px;
-            padding: 0.8rem;
+            max-width: clamp(220px, 50vw, 350px);
+            padding: clamp(0.6rem, 2vw, 0.8rem);
             margin: 0.5rem auto;
             border: 1px solid #ddd;
             border-radius: var(--radius);
             display: block;
             transition: all 0.3s;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
         }
 
         input:focus {
@@ -387,12 +390,12 @@
         }
 
         button {
-            padding: 0.8rem 1.5rem;
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
             margin: 0.5rem;
             border: none;
             border-radius: var(--radius);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -416,12 +419,12 @@
         .total-amount {
             font-weight: 600;
             margin: 1rem 0;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
         }
 
         .error-message {
             color: #ff0000;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             margin-top: 0.3rem;
             text-align: center;
             display: none;
@@ -432,27 +435,32 @@
         }
 
         #servicesSection {
-            padding: 2rem 1rem;
+            padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 2vw, 1rem);
+            text-align: center;
         }
 
         #servicesSection .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 40vw, 240px), 1fr));
+            gap: clamp(0.8rem, 2.5vw, 1.2rem);
+            margin-top: clamp(1rem, 3vw, 1.5rem);
+            max-width: clamp(300px, 90vw, 1200px);
             margin-left: auto;
             margin-right: auto;
         }
 
         .service-item {
             background: #fff;
-            padding: 1.5rem;
+            padding: clamp(0.8rem, 2.5vw, 1.2rem);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
             animation: slideUp 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 200px;
         }
 
         .service-item:hover {
@@ -461,31 +469,34 @@
         }
 
         .service-item img {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 0.75rem;
+            width: clamp(28px, 6vw, 36px);
+            height: clamp(28px, 6vw, 36px);
+            margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+            object-fit: contain;
         }
 
         .service-item h3 {
-            font-size: 1.4rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 0.5rem;
+            margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
         }
 
         .service-item p {
-            font-size: 0.95rem;
+            font-size: clamp(0.75rem, 2.2vw, 0.85rem);
             color: #666;
             line-height: 1.5;
+            max-width: 90%;
+            margin: 0 auto;
         }
 
         #homeSection {
             text-align: center;
-            padding: 2rem 1rem;
+            padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 2vw, 1rem);
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -494,14 +505,14 @@
         }
 
         .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            max-width: clamp(400px, 80vw, 600px);
             margin: 0.75rem auto;
             color: #666;
         }
 
         .hero-btn {
-            padding: 1rem 2rem;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
             font-weight: 600;
             background: var(--gradient);
             color: #fff;
@@ -510,7 +521,7 @@
             cursor: pointer;
             transition: all 0.3s;
             animation: pulse 2s infinite;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .hero-btn:hover {
@@ -521,14 +532,14 @@
 
         .smm-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 40vw, 180px), 1fr));
+            gap: clamp(1rem, 3vw, 1.5rem);
             margin-top: 1.5rem;
         }
 
         .feature-card {
             background: #fff;
-            padding: 1rem;
+            padding: clamp(0.8rem, 2vw, 1rem);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             text-align: center;
@@ -542,18 +553,18 @@
         }
 
         .feature-card img {
-            width: 40px;
-            height: 40px;
+            width: clamp(32px, 5vw, 40px);
+            height: clamp(32px, 5vw, 40px);
             margin-bottom: 0.75rem;
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
             font-weight: 600;
         }
 
         .scanner-img {
-            max-width: 200px;
+            max-width: clamp(160px, 40vw, 200px);
             margin: 1rem auto;
             display: block;
             border-radius: var(--radius);
@@ -562,38 +573,38 @@
 
         #contactSection {
             text-align: center;
-            padding: 2rem 1rem;
+            padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 2vw, 1rem);
         }
 
         #contactSection .contact-info {
-            max-width: 600px;
+            max-width: clamp(300px, 80vw, 600px);
             margin: 1rem auto;
             line-height: 1.6;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             color: #666;
         }
 
         footer {
             background: var(--text);
             color: #fff;
-            padding: 1.5rem;
+            padding: clamp(1rem, 3vw, 1.5rem);
             text-align: center;
         }
 
         footer p {
             margin-bottom: 0.75rem;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
         }
 
         .footer-btn {
-            padding: 0.8rem 1.5rem;
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
             background: var(--gradient);
             color: #fff;
             border: none;
             border-radius: var(--radius);
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             font-weight: 600;
         }
 
@@ -628,13 +639,52 @@
             50% { transform: scale(1.05); }
         }
 
+        /* Large screens */
+        @media (min-width: 1200px) {
+            .header-container {
+                padding: 0 2rem;
+            }
+
+            main {
+                padding: 2rem;
+            }
+
+            .package-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            #servicesSection .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .service-item {
+                padding: 1.5rem;
+            }
+
+            .service-item img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .service-item h3 {
+                font-size: 1.4rem;
+            }
+
+            .service-item p {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Tablets and medium screens */
         @media (max-width: 1024px) {
             .package-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
 
-            .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            #servicesSection .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1.2rem;
             }
 
             .header-container {
@@ -644,19 +694,38 @@
             main {
                 padding: 1rem;
             }
+
+            .service-item {
+                padding: 1.2rem;
+            }
+
+            .service-item img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .service-item h3 {
+                font-size: 1.2rem;
+            }
+
+            .service-item p {
+                font-size: 0.9rem;
+            }
         }
 
+        /* Mobile devices */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 70px;
+                top: 60px;
                 left: 0;
                 right: 0;
                 background: #fff;
                 padding: 1rem;
                 box-shadow: var(--shadow);
+                z-index: 999;
             }
 
             .nav-menu.active {
@@ -668,163 +737,263 @@
             }
 
             .logo h1 {
-                font-size: 1.5rem;
+                font-size: clamp(1.1rem, 3vw, 1.5rem);
             }
 
             .logo img {
-                width: 40px;
-                height: 40px;
+                width: clamp(35px, 5vw, 40px);
+                height: clamp(35px, 5vw, 40px);
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: clamp(1.6rem, 4vw, 2rem);
             }
 
             .hero p {
-                font-size: 0.95rem;
+                font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             }
 
             .hero-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
+                padding: clamp(0.7rem, 2vw, 0.8rem) clamp(1.2rem, 3vw, 1.5rem);
+                font-size: clamp(0.85rem, 2.5vw, 0.9rem);
             }
 
             .package-grid {
                 grid-template-columns: 1fr;
             }
 
-            .services-grid {
+            #servicesSection .services-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             .smm-features {
-                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             }
 
             h2 {
-                font-size: 1.8rem;
+                font-size: clamp(1.4rem, 3.5vw, 1.8rem);
             }
 
             .progress-step {
-                width: 1.8rem;
-                height: 1.8rem;
-                font-size: 0.85rem;
+                width: clamp(1.4rem, 4vw, 1.8rem);
+                height: clamp(1.4rem, 4vw, 1.8rem);
+                font-size: clamp(0.75rem, 2vw, 0.85rem);
             }
 
             input, label {
-                max-width: 300px;
-                padding: 0.7rem;
+                max-width: clamp(200px, 60vw, 300px);
+                padding: clamp(0.5rem, 2vw, 0.7rem);
             }
 
             .social-btn {
-                max-width: 240px;
-                padding: 0.7rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo h1 {
-                font-size: 1.3rem;
+                max-width: clamp(180px, 50vw, 240px);
+                padding: clamp(0.5rem, 2vw, 0.7rem);
             }
 
-            .logo img {
-                width: 35px;
-                height: 35px;
-            }
-
-            .nav-menu a {
-                font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-            }
-
-            .hero-btn {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.85rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .package-card h3 {
-                font-size: 1.4rem;
-            }
-
-            .package-card p.price {
-                font-size: 1.2rem;
-            }
-
-            .service-item h3 {
-                font-size: 1.2rem;
-            }
-
-            .service-item p {
-                font-size: 0.9rem;
+            .service-item {
+                padding: 1rem;
+                min-height: 180px;
             }
 
             .service-item img {
-                width: 36px;
-                height: 36px;
+                width: 32px;
+                height: 32px;
             }
 
-            .feature-card h3 {
+            .service-item h3 {
                 font-size: 1.1rem;
             }
 
+            .service-item p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: clamp(1rem, 3vw, 1.3rem);
+            }
+
+            .logo img {
+                width: clamp(30px, 5vw, 35px);
+                height: clamp(30px, 5vw, 35px);
+            }
+
+            .nav-menu a {
+                font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+                padding: clamp(0.3rem, 1vw, 0.4rem) clamp(0.6rem, 2vw, 0.8rem);
+            }
+
+            .hero h1 {
+                font-size: clamp(1.4rem, 4vw, 1.6rem);
+            }
+
+            .hero p {
+                font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            }
+
+            .hero-btn {
+                padding: clamp(0.6rem, 2vw, 0.7rem) clamp(1rem, 3vw, 1.2rem);
+                font-size: clamp(0.8rem, 2.5vw, 0.85rem);
+            }
+
+            h2 {
+                font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+            }
+
+            .package-card h3 {
+                font-size: clamp(1.2rem, 3vw, 1.4rem);
+            }
+
+            .package-card p.price {
+                font-size: clamp(1rem, 2.5vw, 1.2rem);
+            }
+
+            .service-item h3 {
+                font-size: clamp(1rem, 3vw, 1.1rem);
+            }
+
+            .service-item p {
+                font-size: clamp(0.75rem, 2.2vw, 0.8rem);
+            }
+
+            .service-item img {
+                width: clamp(28px, 5vw, 32px);
+                height: clamp(28px, 5vw, 32px);
+            }
+
+            .feature-card h3 {
+                font-size: clamp(1rem, 3vw, 1.1rem);
+            }
+
             .feature-card img {
-                width: 36px;
-                height: 36px;
+                width: clamp(30px, 5vw, 36px);
+                height: clamp(30px, 5vw, 36px);
             }
 
             .scanner-img {
-                max-width: 180px;
+                max-width: clamp(140px, 40vw, 180px);
             }
 
             .total-amount {
-                font-size: 1rem;
+                font-size: clamp(0.85rem, 2.5vw, 1rem);
             }
 
             .progress-step {
-                width: 1.6rem;
-                height: 1.6rem;
-                font-size: 0.8rem;
+                width: clamp(1.4rem, 4vw, 1.6rem);
+                height: clamp(1.4rem, 4vw, 1.6rem);
+                font-size: clamp(0.7rem, 2vw, 0.8rem);
+            }
+
+            .service-item {
+                padding: 0.8rem;
+                min-height: 160px;
             }
 
             input, label {
-                max-width: 260px;
-                padding: 0.6rem;
-                font-size: 0.9rem;
+                max-width: clamp(180px, 60vw, 260px);
+                padding: clamp(0.5rem, 2vw, 0.6rem);
+                font-size: clamp(0.8rem, 2.5vw, 0.9rem);
             }
 
             button {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.9rem;
+                padding: clamp(0.6rem, 2vw, 0.7rem) clamp(1rem, 3vw, 1.2rem);
+                font-size: clamp(0.8rem, 2.5vw, 0.9rem);
             }
 
             .social-btn {
-                max-width: 200px;
-                padding: 0.6rem;
+                max-width: clamp(160px, 50vw, 200px);
+                padding: clamp(0.5rem, 2vw, 0.6rem);
             }
 
             .contact-info {
-                font-size: 0.9rem;
+                font-size: clamp(0.8rem, 2.5vw, 0.9rem);
             }
 
             footer p {
-                font-size: 0.9rem;
+                font-size: clamp(0.8rem, 2.5vw, 0.9rem);
             }
 
             .footer-btn {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.9rem;
+                padding: clamp(0.6rem, 2vw, 0.7rem) clamp(1rem, 3vw, 1.2rem);
+                font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            }
+        }
+
+        /* Ultra-small screens */
+        @media (max-width: 320px) {
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo h1 {
+                font-size: 1rem;
+            }
+
+            .nav-menu a {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 0.8rem;
+            }
+
+            .hero-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #servicesSection .services-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .smm-features {
+                grid-template-columns: 1fr;
+            }
+
+            .service-item {
+                padding: 0.6rem;
+                min-height: 140px;
+            }
+
+            .service-item img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .service-item h3 {
+                font-size: 0.95rem;
+            }
+
+            .service-item p {
+                font-size: 0.75rem;
+            }
+
+            input, label {
+                max-width: 100%;
+                padding: 0.5rem;
+            }
+
+            .social-btn {
+                max-width: 100%;
+                padding: 0.5rem;
+            }
+
+            .scanner-img {
+                max-width: 140px;
             }
         }
     </style>
@@ -882,32 +1051,27 @@
                 <div class="service-item">
                     <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook">
                     <h3>Facebook Growth</h3>
-                   
-                    <p><strong>Followers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.500/1000<br><strong>Views:</strong> Rs.150/1000</p>
+                    <p><strong>Followers:</strong> Rs.0.6<br><strong>Likes:</strong> Rs.0.5<br><strong>Views:</strong> Rs.0.15</p>
                 </div>
                 <div class="service-item">
                     <img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram">
                     <h3>Instagram Growth</h3>
-                    
-                    <p><strong>Followers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.100/1000<br><strong>Views:</strong> Rs.10/1000</p>
+                    <p><strong>Followers:</strong> Rs.0.6<br><strong>Likes:</strong> Rs.0.1<br><strong>Views:</strong> Rs.0.01</p>
                 </div>
                 <div class="service-item">
                     <img src="https://img.icons8.com/color/48/000000/tiktok.png" alt="TikTok">
                     <h3>TikTok Growth</h3>
-                   
-                    <p><strong>Followers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.100/1000<br><strong>Views:</strong> Rs.10/2000</p>
+                    <p><strong>Followers:</strong> Rs.0.6<br><strong>Likes:</strong> Rs.0.1<br><strong>Views:</strong> Rs.0.005</p>
                 </div>
                 <div class="service-item">
                     <img src="https://img.icons8.com/color/48/000000/youtube-play.png" alt="YouTube">
                     <h3>YouTube Growth</h3>
-                   
-                    <p><strong>Subscribers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.500/1000</p>
+                    <p><strong>Subscribers:</strong> Rs.0.6<br><strong>Likes:</strong> Rs.0.5</p>
                 </div>
                 <div class="service-item">
                     <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Meta Ads">
                     <h3>Meta Ads</h3>
-                   
-                    <p><strong>Packages:</strong><br><strong> Basic</strong> (Rs.3999)<br><strong> Standard </strong>(Rs.4999) <br><strong>  Premium</strong> (Rs.6999)</p>
+                    <p><strong>Packages:</strong><br><strong>Basic</strong> (Rs.3999)<br><strong>Standard</strong> (Rs.4999)<br><strong>Premium</strong> (Rs.6999)</p>
                 </div>
             </div>
         </section>
@@ -923,7 +1087,7 @@
             </div>
 
             <div class="step active" id="step1">
-                <p style="font-weight: 500;">Boost For?</p>
+                <h3 style="font-weight: 500;">Boost For?</h3>
                 <div class="option" onclick="selectBoostType('personal')">
                     <img src="https://img.icons8.com/color/48/000000/user.png" alt="Personal">
                     Personal
@@ -935,7 +1099,7 @@
             </div>
 
             <div class="step" id="step2_personal">
-                <p style="font-weight: 500;">Choose Platform</p>
+                <h3 style="font-weight: 500;">Choose Platform</h3>
                 <div class="option" onclick="selectPlatform('facebook')">
                     <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook">
                     Facebook
@@ -958,7 +1122,8 @@
             </div>
 
             <div class="step" id="step2_business">
-                <p style="font-weight: 500;">Meta Ads Boost Packages</p>
+                <h3 style="font-weight: 500;">Meta Ads Boost Packages</h3>
+                <br><P>Grow your business with targeted Meta ads that reach the right people at the right time. Drive real traffic, boost sales, and get results that matter. Let your brand rise with smart advertising.</P><br>
                 <div class="package-grid">
                     <div class="package-card">
                         <h3>Basic Package</h3>
@@ -1000,68 +1165,68 @@
             </div>
 
             <div class="step" id="step3_facebook">
-                <p style="font-weight: 500;">Facebook Packages</p>
-                <div class="service-option" onclick="selectService('facebook', 'Followers - Rs.600 per 1000')">
+                <h3 style="font-weight: 500;">Facebook Packages</h3>
+                <div class="service-option" onclick="selectService('facebook', 'Followers - Rs.0.6')">
                     <img src="https://img.icons8.com/color/48/000000/crowd.png" alt="Followers">
-                    Followers - Rs.600/1000
+                    Followers - Rs.0.6
                 </div>
-                <div class="service-option" onclick="selectService('facebook', 'Likes - Rs.500 per 1000')">
+                <div class="service-option" onclick="selectService('facebook', 'Likes - Rs.0.5')">
                     <img src="https://img.icons8.com/color/48/000000/like.png" alt="Likes">
-                    Likes - Rs.500/1000
+                    Likes - Rs.0.5
                 </div>
-                <div class="service-option" onclick="selectService('facebook', 'Views - Rs.150 per 1000')">
+                <div class="service-option" onclick="selectService('facebook', 'Views - Rs.0.15')">
                     <img src="https://img.icons8.com/color/48/000000/visible.png" alt="Views">
-                    Views - Rs.150/1000
+                    Views - Rs.0.15
                 </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(2)">Back</button>
                 </div>
             </div>
             <div class="step" id="step3_instagram">
-                <p style="font-weight: 500;">Instagram Packages</p>
-                <div class="service-option" onclick="selectService('instagram', 'Followers - Rs.600 per 1000')">
+                <h3 style="font-weight: 500;">Instagram Packages</h3>
+                <div class="service-option" onclick="selectService('instagram', 'Followers - Rs.0.6')">
                     <img src="https://img.icons8.com/color/48/000000/crowd.png" alt="Followers">
-                    Followers - Rs.600/1000
+                    Followers - Rs.0.6
                 </div>
-                <div class="service-option" onclick="selectService('instagram', 'Likes - Rs.100 per 1000')">
+                <div class="service-option" onclick="selectService('instagram', 'Likes - Rs.0.1')">
                     <img src="https://img.icons8.com/color/48/000000/like.png" alt="Likes">
-                    Likes - Rs.100/1000
+                    Likes - Rs.0.1
                 </div>
-                <div class="service-option" onclick="selectService('instagram', 'Views - Rs.10 per 1000')">
+                <div class="service-option" onclick="selectService('instagram', 'Views - Rs.0.01')">
                     <img src="https://img.icons8.com/color/48/000000/visible.png" alt="Views">
-                    Views - Rs.10/1000
+                    Views - Rs.0.01
                 </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(2)">Back</button>
                 </div>
             </div>
             <div class="step" id="step3_tiktok">
-                <p style="font-weight: 500;">TikTok Packages</p>
-                <div class="service-option" onclick="selectService('tiktok', 'Followers - Rs.600 per 1000')">
+                <h3 style="font-weight: 500;">TikTok Packages</h3>
+                <div class="service-option" onclick="selectService('tiktok', 'Followers - Rs.0.6')">
                     <img src="https://img.icons8.com/color/48/000000/crowd.png" alt="Followers">
-                    Followers - Rs.600/1000
+                    Followers - Rs.0.6
                 </div>
-                <div class="service-option" onclick="selectService('tiktok', 'Likes - Rs.100 per 1000')">
+                <div class="service-option" onclick="selectService('tiktok', 'Likes - Rs.0.1')">
                     <img src="https://img.icons8.com/color/48/000000/like.png" alt="Likes">
-                    Likes - Rs.100/1000
+                    Likes - Rs.0.1
                 </div>
-                <div class="service-option" onclick="selectService('tiktok', 'Views - Rs.10 per 2000')">
+                <div class="service-option" onclick="selectService('tiktok', 'Views - Rs.0.005')">
                     <img src="https://img.icons8.com/color/48/000000/visible.png" alt="Views">
-                    Views - Rs.10/2000
+                    Views - Rs.0.005
                 </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(2)">Back</button>
                 </div>
             </div>
             <div class="step" id="step3_youtube">
-                <p style="font-weight: 500;">YouTube Packages</p>
-                <div class="service-option" onclick="selectService('youtube', 'Subscribers - Rs.600 per 1000')">
+                <h3 style="font-weight: 500;">YouTube Packages</h3>
+                <div class="service-option" onclick="selectService('youtube', 'Subscribers - Rs.0.6')">
                     <img src="https://img.icons8.com/color/48/000000/crowd.png" alt="Subscribers">
-                    Subscribers - Rs.600/1000
+                    Subscribers - Rs.0.6
                 </div>
-                <div class="service-option" onclick="selectService('youtube', 'Likes - Rs.500 per 1000')">
+                <div class="service-option" onclick="selectService('youtube', 'Likes - Rs.0.5')">
                     <img src="https://img.icons8.com/color/48/000000/like.png" alt="Likes">
-                    Likes - Rs.500/1000
+                    Likes - Rs.0.5
                 </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(2)">Back</button>
@@ -1069,8 +1234,8 @@
             </div>
 
             <div class="step" id="step4_facebook">
-                <p style="font-weight: 500;">Facebook Package</p>
-                <p id="facebookServiceDisplay"></p>
+                <h4 style="font-weight: 500;">Facebook Package</h4>
+                <h3 id="facebookServiceDisplay"></h3>
                 <input type="number" id="facebookQuantity" min="100" placeholder="Enter Quantity (Min: 100)" required>
                 <p class="error-message" id="facebookError">Minimum quantity is 100.</p>
                 <p class="total-amount">Total: <span id="facebookTotalAmount">Rs. 0</span></p>
@@ -1080,8 +1245,8 @@
                 </div>
             </div>
             <div class="step" id="step4_instagram">
-                <p style="font-weight: 500;">Instagram Package</p>
-                <p id="instagramServiceDisplay"></p>
+                <h4 style="font-weight: 500;">Instagram Package</h4>
+                <h3 id="instagramServiceDisplay"></h3>
                 <input type="number" id="instagramQuantity" min="100" placeholder="Enter Quantity (Min: 100)" required>
                 <p class="error-message" id="instagramError">Minimum quantity is 100.</p>
                 <p class="total-amount">Total: <span id="instagramTotalAmount">Rs. 0</span></p>
@@ -1091,8 +1256,8 @@
                 </div>
             </div>
             <div class="step" id="step4_tiktok">
-                <p style="font-weight: 500;">TikTok Package</p>
-                <p id="tiktokServiceDisplay"></p>
+                <h4 style="font-weight: 500;">TikTok Package</h4>
+                <h3 id="tiktokServiceDisplay"></h3>
                 <input type="number" id="tiktokQuantity" min="100" placeholder="Enter Quantity (Min: 100)" required>
                 <p class="error-message" id="tiktokError">Minimum quantity is 100.</p>
                 <p class="total-amount">Total: <span id="tiktokTotalAmount">Rs. 0</span></p>
@@ -1102,8 +1267,8 @@
                 </div>
             </div>
             <div class="step" id="step4_youtube">
-                <p style="font-weight: 500;">YouTube Package</p>
-                <p id="youtubeServiceDisplay"></p>
+                <h4 style="font-weight: 500;">YouTube Package</h4>
+                <h3 id="youtubeServiceDisplay"></h3>
                 <input type="number" id="youtubeQuantity" min="100" placeholder="Enter Quantity (Min: 100)" required>
                 <p class="error-message" id="youtubeError">Minimum quantity is 100.</p>
                 <p class="total-amount">Total: <span id="youtubeTotalAmount">Rs. 0</span></p>
@@ -1114,7 +1279,7 @@
             </div>
 
             <div class="step" id="step5_facebook">
-                <p style="font-weight: 500;">Complete Payment</p>
+                <h3 style="font-weight: 500;">Complete Payment</h3>
                 <p id="facebookStep5Display"></p>
                 <p class="total-amount">Total: <span id="facebookStep5Total"></span></p>
                 <img src="qr.jpg" alt="QR Code" class="scanner-img">
@@ -1128,7 +1293,7 @@
                 </div>
             </div>
             <div class="step" id="step5_instagram">
-                <p style="font-weight: 500;">Complete Payment</p>
+                <h3 style="font-weight: 500;">Complete Payment</h3>
                 <p id="instagramStep5Display"></p>
                 <p class="total-amount">Total: <span id="instagramStep5Total"></span></p>
                 <img src="qr.jpg" alt="QR Code" class="scanner-img">
@@ -1142,7 +1307,7 @@
                 </div>
             </div>
             <div class="step" id="step5_tiktok">
-                <p style="font-weight: 500;">Complete Payment</p>
+                <h3 style="font-weight: 500;">Complete Payment</h3>
                 <p id="tiktokStep5Display"></p>
                 <p class="total-amount">Total: <span id="tiktokStep5Total"></span></p>
                 <img src="qr.jpg" alt="QR Code" class="scanner-img">
@@ -1156,7 +1321,7 @@
                 </div>
             </div>
             <div class="step" id="step5_youtube">
-                <p style="font-weight: 500;">Complete Payment</p>
+                <h3 style="font-weight: 500;">Complete Payment</h3>
                 <p id="youtubeStep5Display"></p>
                 <p class="total-amount">Total: <span id="youtubeStep5Total"></span></p>
                 <img src="qr.jpg" alt="QR Code" class="scanner-img">
@@ -1171,7 +1336,7 @@
             </div>
 
             <div class="step" id="step3_business">
-                <p style="font-weight: 500;">Complete Business Package Order</p>
+                <h3 style="font-weight: 500;">Complete Business Package Order</h3>
                 <p id="businessPackageDisplay"></p>
                 <input type="text" id="businessCustomerName" placeholder="Your Name" required>
                 <input type="tel" id="businessCustomerMobile" placeholder="Your Mobile Number" required>
@@ -1216,23 +1381,23 @@
 
         const pricing = {
             facebook: {
-                'Followers - Rs.600 per 1000': 600,
-                'Likes - Rs.500 per 1000': 500,
-                'Views - Rs.150 per 1000': 150
+                'Followers - Rs.0.6': 0.6,
+                'Likes - Rs.0.5': 0.5,
+                'Views - Rs.0.15': 0.15
             },
             instagram: {
-                'Followers - Rs.600 per 1000': 600,
-                'Likes - Rs.100 per 1000': 100,
-                'Views - Rs.10 per 1000': 10
+                'Followers - Rs.0.6': 0.6,
+                'Likes - Rs.0.1': 0.1,
+                'Views - Rs.0.01': 0.01
             },
             tiktok: {
-                'Followers - Rs.600 per 1000': 600,
-                'Likes - Rs.100 per 1000': 100,
-                'Views - Rs.10 per 2000': 5
+                'Followers - Rs.0.6': 0.6,
+                'Likes - Rs.0.1': 0.1,
+                'Views - Rs.0.005': 0.005
             },
             youtube: {
-                'Subscribers - Rs.600 per 1000': 600,
-                'Likes - Rs.500 per 1000': 500
+                'Subscribers - Rs.0.6': 0.6,
+                'Likes - Rs.0.5': 0.5
             },
             business: {
                 'Basic Package': 3999,
@@ -1388,9 +1553,8 @@
                 nextBtn.disabled = quantity <= 0;
             }
             const rate = pricing[platform][selectedService];
-            const multiplier = selectedService.includes('Views - Rs.10 per 2000') ? 2000 : 1000;
-            totalAmount = quantity > 0 ? (quantity * rate) / multiplier : 0;
-            document.getElementById(`${platform}TotalAmount`).textContent = `Rs. ${totalAmount}`;
+            totalAmount = quantity > 0 ? quantity * rate : 0;
+            document.getElementById(`${platform}TotalAmount`).textContent = `Rs. ${totalAmount.toFixed(2)}`;
         }
 
         function goToStep5(platform) {
@@ -1407,7 +1571,7 @@
                 step.classList.toggle('active', parseInt(step.dataset.step) === 5);
             });
             document.getElementById(`${platform}Step5Display`).textContent = `${selectedService} x ${quantity}`;
-            document.getElementById(`${platform}Step5Total`).textContent = `Rs. ${totalAmount}`;
+            document.getElementById(`${platform}Step5Total`).textContent = `Rs. ${totalAmount.toFixed(2)}`;
         }
 
         function goBack(step) {
@@ -1438,7 +1602,7 @@
 
         function submitForm(platform) {
             const quantity = document.getElementById(`${platform}Quantity`).value;
-            const message = `New Order:\nPlatform: ${platform.charAt(0).toUpperCase() + platform.slice(1)}\nService: ${selectedService}\nQuantity: ${quantity}\nTotal: Rs. ${totalAmount}\nPayment: Completed (Screenshot to be sent)`;
+            const message = `New Order:\nPlatform: ${platform.charAt(0).toUpperCase() + platform.slice(1)}\nService: ${selectedService}\nQuantity: ${quantity}\nTotal: Rs. ${totalAmount.toFixed(2)}\nPayment: Completed (Screenshot to be sent)`;
             const whatsappUrl = `https://wa.me/9779826660865?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
             alert('Thank you for your order! Please send the payment screenshot via WhatsApp.');
