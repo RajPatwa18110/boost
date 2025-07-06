@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Boost Nepal - Social Media Growth">
-    <meta name="keywords" content="social media, Nepal, followers, likes, views">
+    <meta name="keywords" content="social media, Nepal, followers, likes, views, Meta Ads">
     <link rel="icon" type="image/png" href="./assets/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Boost Nepal</title>
     <style>
         :root {
             --primary: #ff8c00;
             --secondary: #800080;
-            --text: #333;
+            --text: #1a1a1a;
             --bg: #f8f9fa;
-            --shadow: 0 4px 8px rgba(0,0,0,0.1);
-            --radius: 8px;
+            --shadow: 0 6px 12px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --gradient: linear-gradient(135deg, #ff8c00, #800080);
         }
 
         * {
@@ -32,23 +33,71 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Particle Animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 140, 0, 0.4);
+            border-radius: 50%;
+            animation: float linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(15px);
+                opacity: 0;
+            }
         }
 
         header {
-            background: var(--bg);
+            background: #fff;
             box-shadow: var(--shadow);
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .header-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
+        }
+
+        .logo img {
+            width: 50px;
+            height: auto;
+            margin-right: 0.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
         }
 
         .logo h1 {
@@ -56,6 +105,7 @@
             font-weight: 700;
             color: var(--primary);
             cursor: pointer;
+            animation: fadeInDown 1s ease-in-out;
         }
 
         .nav-menu {
@@ -67,28 +117,50 @@
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: all 0.3s;
+            position: relative;
         }
 
         .nav-menu a:hover {
-            color: var(--secondary);
+            color: #fff;
+            background: var(--gradient);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .hamburger {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--text);
         }
 
         main {
             flex: 1;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         section {
-            min-height: 80vh;
+            min-height: 70vh;
             display: none;
         }
 
@@ -100,23 +172,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            max-width: 250px;
+            max-width: 280px;
             padding: 0.8rem;
             border-radius: var(--radius);
             font-weight: 500;
             margin: 0.5rem auto;
-            background: var(--primary);
-            color: var(--bg);
+            background: var(--gradient);
+            color: #fff;
             text-decoration: none;
             transition: all 0.3s;
         }
 
         .social-btn:hover {
             background: var(--secondary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
         }
 
-        .social-btn svg {
+        .social-btn img {
             width: 20px;
             height: 20px;
             margin-right: 0.5rem;
@@ -138,72 +211,177 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s;
         }
 
         .progress-step.active {
-            background: var(--primary);
-            color: var(--bg);
+            background: var(--gradient);
+            color: #fff;
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
+            color: var(--text);
+            animation: fadeInUp 1s ease-in-out;
         }
 
         p {
             font-size: 1rem;
-            text-align: center;
         }
 
         .step {
             display: none;
+            text-align: center;
         }
 
         .step.active {
             display: block;
         }
 
-        .option, .service-option {
+        .option, .service-option, .package-option {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            background: #f5f5f5;
+            background: #fff;
             padding: 0.8rem;
-            margin: 0.5rem 0;
+            margin: 0.5rem auto;
             border-radius: var(--radius);
             cursor: pointer;
             transition: all 0.3s;
+            max-width: 350px;
+            box-shadow: var(--shadow);
         }
 
-        .option:hover, .service-option:hover {
-            background: var(--primary);
-            color: var(--bg);
+        .option:hover, .service-option:hover, .package-option:hover {
+            background: var(--gradient);
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
         }
 
-        .option svg, .service-option svg {
+        .option img, .service-option img, .package-option img {
             width: 20px;
             height: 20px;
         }
 
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .package-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideUp 0.5s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transition: height 0.3s;
+        }
+
+        .package-card:hover::before {
+            height: 8px;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .package-card h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .package-card p.price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .package-card ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .package-card li {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin: 0.4rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .package-card li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .package-card button {
+            background: var(--gradient);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .package-card button:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
         input, label {
             max-width: 350px;
-            padding: 0.6rem;
+            padding: 0.8rem;
             margin: 0.5rem auto;
             border: 1px solid #ddd;
             border-radius: var(--radius);
             display: block;
             transition: all 0.3s;
+            font-size: 0.95rem;
         }
 
         input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 6px rgba(255, 140, 0, 0.3);
+            box-shadow: 0 0 8px rgba(255, 140, 0, 0.3);
         }
 
         button {
@@ -211,49 +389,92 @@
             margin: 0.5rem;
             border: none;
             border-radius: var(--radius);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: var(--bg);
+            background: var(--gradient);
+            color: #fff;
         }
 
         .btn-back {
-            background: var(--secondary);
-            color: var(--bg);
+            background: #666;
+            color: #fff;
         }
 
         .btn-primary:hover, .btn-back:hover {
             filter: brightness(1.1);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .total-amount {
-            font-weight: 500;
+            font-weight: 600;
             margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .error-message {
+            color: #ff0000;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message.active {
+            display: block;
+        }
+
+        #servicesSection {
+            padding: 2rem 1rem;
         }
 
         #servicesSection .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
             margin-top: 1.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .service-item {
-            background: #f5f5f5;
-            padding: 1rem;
+            background: #fff;
+            padding: 1.5rem;
             border-radius: var(--radius);
+            box-shadow: var(--shadow);
             text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideUp 0.5s ease-in-out;
         }
 
-        .service-item svg {
-            width: 28px;
-            height: 28px;
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .service-item img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-item h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text);
             margin-bottom: 0.5rem;
+        }
+
+        .service-item p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
         }
 
         #homeSection {
@@ -264,39 +485,42 @@
         .hero h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeIn 1s;
+            animation: fadeIn 1s ease-in-out;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 500px;
-            margin: 0.5rem auto;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0.75rem auto;
+            color: #666;
         }
 
         .hero-btn {
             padding: 1rem 2rem;
             font-weight: 600;
-            background: var(--primary);
-            color: var(--bg);
+            background: var(--gradient);
+            color: #fff;
             border: none;
             border-radius: var(--radius);
             cursor: pointer;
             transition: all 0.3s;
             animation: pulse 2s infinite;
+            font-size: 1rem;
         }
 
         .hero-btn:hover {
             background: var(--secondary);
             transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .smm-features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem;
             margin-top: 1.5rem;
         }
 
@@ -307,18 +531,18 @@
             box-shadow: var(--shadow);
             text-align: center;
             transition: transform 0.3s;
-            animation: slideUp 0.5s;
+            animation: slideUp 0.5s ease-in-out;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        .feature-card svg {
+        .feature-card img {
             width: 40px;
             height: 40px;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
+            margin-bottom: 0.75rem;
         }
 
         .feature-card h3 {
@@ -336,34 +560,45 @@
 
         #contactSection {
             text-align: center;
+            padding: 2rem 1rem;
         }
 
         #contactSection .contact-info {
             max-width: 600px;
             margin: 1rem auto;
             line-height: 1.6;
+            font-size: 0.95rem;
+            color: #666;
         }
 
         footer {
             background: var(--text);
-            color: var(--bg);
+            color: #fff;
             padding: 1.5rem;
             text-align: center;
         }
 
+        footer p {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
         .footer-btn {
             padding: 0.8rem 1.5rem;
-            background: var(--primary);
-            color: var(--bg);
+            background: var(--gradient);
+            color: #fff;
             border: none;
             border-radius: var(--radius);
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         .footer-btn:hover {
             background: var(--secondary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         @keyframes fadeIn {
@@ -371,8 +606,18 @@
             to { opacity: 1; }
         }
 
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @keyframes slideUp {
-            from { transform: translateY(15px); opacity: 0; }
+            from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
@@ -381,15 +626,33 @@
             50% { transform: scale(1.05); }
         }
 
+        @media (max-width: 1024px) {
+            .package-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 70px;
                 left: 0;
                 right: 0;
-                background: var(--bg);
+                background: #fff;
                 padding: 1rem;
                 box-shadow: var(--shadow);
             }
@@ -402,19 +665,41 @@
                 display: block;
             }
 
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                width: 40px;
+            }
+
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
             }
 
             .hero-btn {
                 padding: 0.8rem 1.5rem;
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
-        }
 
-        @media (max-width: 480px) {
-            .logo h1 {
-                font-size: 1.5rem;
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .smm-features {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            }
+
+            h2 {
+                font-size: 1.8rem;
             }
 
             .progress-step {
@@ -423,16 +708,131 @@
                 font-size: 0.85rem;
             }
 
+            input, label {
+                max-width: 300px;
+                padding: 0.7rem;
+            }
+
+            .social-btn {
+                max-width: 240px;
+                padding: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+
+            .logo img {
+                width: 35px;
+            }
+
+            .nav-menu a {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .hero-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .package-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .package-card p.price {
+                font-size: 1.2rem;
+            }
+
+            .service-item h3 {
+                font-size: 1.2rem;
+            }
+
+            .service-item p {
+                font-size: 0.9rem;
+            }
+
+            .service-item img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .feature-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .feature-card img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .scanner-img {
+                max-width: 180px;
+            }
+
+            .total-amount {
+                font-size: 1rem;
+            }
+
+            .progress-step {
+                width: 1.6rem;
+                height: 1.6rem;
+                font-size: 0.8rem;
+            }
+
+            input, label {
+                max-width: 260px;
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            button {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
             .social-btn {
                 max-width: 200px;
+                padding: 0.6rem;
+            }
+
+            .contact-info {
+                font-size: 0.9rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+
+            .footer-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Particle Animation Container -->
+    <div class="particles"></div>
+
     <header>
         <div class="header-container">
             <div class="logo">
+                <img src="https://via.placeholder.com/50x50.png?text=BN" alt="Boost Nepal Logo">
                 <h1 onclick="showSection('home')">BOOST NEPAL</h1>
             </div>
             <nav class="nav-menu" id="navMenu">
@@ -448,22 +848,22 @@
         <section id="homeSection" class="active">
             <div class="hero">
                 <h1>Boost Your Social Media</h1>
-                <p>Grow followers, likes, and views with Boost Nepal's expert solutions.</p>
+                <p>Grow your audience with Boost Nepal's expert solutions for personal and business growth.</p>
                 <button class="hero-btn" onclick="showSection('booster')">BOOST NOW</button>
             </div>
             <div class="smm-features">
                 <div class="feature-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M96 224c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm448 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm-317.5 213.3L320 480l93.5-42.7C432.8 429.2 448 410.9 448 390.4V272h48v118.4c0 44.2-30.2 83.1-73.7 94.2L320 512l-102.3-27.5c-43.5-11.1-73.7-50-73.7-94.2V272h48v118.4c0 19.5 15.2 37.8 34.5 45.9z"/></svg>
+                    <img src="https://img.icons8.com/color/48/000000/crowd.png" alt="Grow Followers">
                     <h3>Grow Followers</h3>
                     <p>Expand your audience.</p>
                 </div>
                 <div class="feature-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M104 168C76.6 168 56 147.4 56 120S76.6 72 104 72s48 20.6 48 48-20.6 48-48 48zm351.1 254.6c-2.3-8.2-9.3-14.6-17.8-16.7l-72-16c-10.2-2.3-17.8-11.3-19.5-21.5L336 248h48c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24h-80c-4.4 0-8 3.6-8 8v80c0 6.5 3.9 12.4 10 14.9l37.5 15c15.7 6.3 26.5 21.5 26.5 38.6v30c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-8c0-17.7-14.3-32-32-32s-32 14.3-32 32v8c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-30c0-17.1 10.8-32.3 26.5-38.6l37.5-15c6.1-2.5 10-8.4 10-14.9v-80c0-4.4-3.6-8-8-8h-80c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h48l-9.3 150.4c-1.7 10.2-10.7 17.8-20.9 19.5l-72 16c-8.5 1.9-15.5 8.3-17.8 16.7C32.9 475 43.8 496 64 496h416c20.2 0 31.1-21 25.1-36.4z"/></svg>
+                    <img src="https://img.icons8.com/color/48/000000/like.png" alt="Increase Likes">
                     <h3>Increase Likes</h3>
                     <p>Boost engagement.</p>
                 </div>
                 <div class="feature-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M288 144c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 240c-52.9 0-96-43.1-96-96s43.1-96 96-96 96 43.1 96 96-43.1 96-96 96zm0-160c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm-192 0c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm384 0c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64z"/></svg>
+                    <img src="https://img.icons8.com/color/48/000000/visible.png" alt="Boost Views">
                     <h3>Boost Views</h3>
                     <p>Amplify reach.</p>
                 </div>
@@ -472,27 +872,37 @@
 
         <section id="servicesSection">
             <h2>Our Services</h2>
-            <p>Explore our growth packages</p>
+            <p>Elevate your brand with our tailored social media growth packages</p>
             <div class="services-grid">
                 <div class="service-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256C504 119 393.2 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63.27V256h63.27v-54.64c0-62.15 37.02-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.87 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V501C393.31 482.38 504 379.78 504 256z"/></svg>
-                    <h3>Facebook</h3>
-                    <p>Followers: Rs.600/1000<br>Likes: Rs.500/1000<br>Views: Rs.150/1000</p>
+                    <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook">
+                    <h3>Facebook Growth</h3>
+                    <p>Enhance your Facebook presence with targeted followers, likes, and views to boost engagement.</p>
+                    <p><strong>Followers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.500/1000<br><strong>Views:</strong> Rs.150/1000</p>
                 </div>
                 <div class="service-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.8 9.9 67.6 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-                    <h3>Instagram</h3>
-                    <p>Followers: Rs.600/1000<br>Likes: Rs.100/1000<br>Views: Rs.10/1000</p>
+                    <img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram">
+                    <h3>Instagram Growth</h3>
+                    <p>Amplify your Instagram reach with cost-effective follower, like, and view packages.</p>
+                    <p><strong>Followers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.100/1000<br><strong>Views:</strong> Rs.10/1000</p>
                 </div>
                 <div class="service-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
-                    <h3>TikTok</h3>
-                    <p>Followers: Rs.600/1000<br>Likes: Rs.100/1000<br>Views: Rs.10/2000</p>
+                    <img src="https://img.icons8.com/color/48/000000/tiktok.png" alt="TikTok">
+                    <h3>TikTok Growth</h3>
+                    <p>Go viral on TikTok with our affordable follower, like, and view boosting services.</p>
+                    <p><strong>Followers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.100/1000<br><strong>Views:</strong> Rs.10/2000</p>
                 </div>
                 <div class="service-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 352 64 288 64S117.219 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.219 448 224 448 288 448s170.781 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    <h3>YouTube</h3>
-                    <p>Subscribers: Rs.600/1000<br>Likes: Rs.500/1000</p>
+                    <img src="https://img.icons8.com/color/48/000000/youtube-play.png" alt="YouTube">
+                    <h3>YouTube Growth</h3>
+                    <p>Expand your YouTube channel with subscriber and like packages designed for growth.</p>
+                    <p><strong>Subscribers:</strong> Rs.600/1000<br><strong>Likes:</strong> Rs.500/1000</p>
+                </div>
+                <div class="service-item">
+                    <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Meta Ads">
+                    <h3>Meta Ads</h3>
+                    <p>Drive business growth with targeted Meta ad campaigns, content creation, and animation reels.</p>
+                    <p><strong>Packages:</strong> Basic (Rs.3999), Standard (Rs.4999), Premium (Rs.6999)</p>
                 </div>
             </div>
         </section>
@@ -504,91 +914,80 @@
                 <div class="progress-step" data-step="2">2</div>
                 <div class="progress-step" data-step="3">3</div>
                 <div class="progress-step" data-step="4">4</div>
+                <div class="progress-step" data-step="5">5</div>
             </div>
 
             <div class="step active" id="step1">
-                <p style="font-weight: 500;">Choose Platform</p>
-                <div class="option" onclick="selectPlatform('facebook')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256C504 119 393.2 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63.27V256h63.27v-54.64c0-62.15 37.02-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.87 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V501C393.31 482.38 504 379.78 504 256z"/></svg>
-                    Facebook
+                <p style="font-weight: 500;">Boost For?</p>
+                <div class="option" onclick="selectBoostType('personal')">
+                    <img src="https://img.icons8.com/color/48/000000/user.png" alt="Personal">
+                    Personal
                 </div>
-                <div class="option" onclick="selectPlatform('instagram')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.8 9.9 67.6 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-                    Instagram
-                </div>
-                <div class="option" onclick="selectPlatform('tiktok')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
-                    TikTok
-                </div>
-                <div class="option" onclick="selectPlatform('youtube')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 352 64 288 64S117.219 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.219 448 224 448 288 448s170.781 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
-                    YouTube
+                <div class="option" onclick="selectBoostType('business')">
+                    <img src="https://img.icons8.com/color/48/000000/briefcase.png" alt="Business">
+                    Business
                 </div>
             </div>
 
-            <div class="step" id="step2_facebook">
-                <p style="font-weight: 500;">Facebook Packages</p>
-                <div class="service-option" onclick="selectService('facebook', 'Followers - Rs.600 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M96 224c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm448 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm-317.5 213.3L320 480l93.5-42.7C432.8 429.2 448 410.9 448 390.4V272h48v118.4c0 44.2-30.2 83.1-73.7 94.2L320 512l-102.3-27.5c-43.5-11.1-73.7-50-73.7-94.2V272h48v118.4c0 19.5 15.2 37.8 34.5 45.9z"/></svg>
-                    Followers - Rs.600/1000
+            <div class="step" id="step2_personal">
+                <p style="font-weight: 500;">Choose Platform</p>
+                <div class="option" onclick="selectPlatform('facebook')">
+                    <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook">
+                    Facebook
                 </div>
-                <div class="service-option" onclick="selectService('facebook', 'Likes - Rs.500 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M104 168C76.6 168 56 147.4 56 120S76.6 72 104 72s48 20.6 48 48-20.6 48-48 48zm351.1 254.6c-2.3-8.2-9.3-14.6-17.8-16.7l-72-16c-10.2-2.3-17.8-11.3-19.5-21.5L336 248h48c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24h-80c-4.4 0-8 3.6-8 8v80c0 6.5 3.9 12.4 10 14.9l37.5 15c15.7 6.3 26.5 21.5 26.5 38.6v30c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-8c0-17.7-14.3-32-32-32s-32 14.3-32 32v8c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-30c0-17.1 10.8-32.3 26.5-38.6l37.5-15c6.1-2.5 10-8.4 10-14.9v-80c0-4.4-3.6-8-8-8h-80c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h48l-9.3 150.4c-1.7 10.2-10.7 17.8-20.9 19.5l-72 16c-8.5 1.9-15.5 8.3-17.8 16.7C32.9 475 43.8 496 64 496h416c20.2 0 31.1-21 25.1-36.4z"/></svg>
-                    Likes - Rs.500/1000
+                <div class="option" onclick="selectPlatform('instagram')">
+                    <img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram">
+                    Instagram
                 </div>
-                <div class="service-option" onclick="selectService('facebook', 'Views - Rs.150 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M288 144c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 240c-52.9 0-96-43.1-96-96s43.1-96 96-96 96 43.1 96 96-43.1 96-96 96zm0-160c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm-192 0c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm384 0c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64z"/></svg>
-                    Views - Rs.150/1000
+                <div class="option" onclick="selectPlatform('tiktok')">
+                    <img src="https://img.icons8.com/color/48/000000/tiktok.png" alt="TikTok">
+                    TikTok
                 </div>
-                <div style="text-align: center;">
-                    <button class="btn-back" onclick="goBack(1)">Back</button>
-                </div>
-            </div>
-            <div class="step" id="step2_instagram">
-                <p style="font-weight: 500;">Instagram Packages</p>
-                <div class="service-option" onclick="selectService('instagram', 'Followers - Rs.600 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M96 224c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm448 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm-317.5 213.3L320 480l93.5-42.7C432.8 429.2 448 410.9 448 390.4V272h48v118.4c0 44.2-30.2 83.1-73.7 94.2L320 512l-102.3-27.5c-43.5-11.1-73.7-50-73.7-94.2V272h48v118.4c0 19.5 15.2 37.8 34.5 45.9z"/></svg>
-                    Followers - Rs.600/1000
-                </div>
-                <div class="service-option" onclick="selectService('instagram', 'Likes - Rs.100 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M104 168C76.6 168 56 147.4 56 120S76.6 72 104 72s48 20.6 48 48-20.6 48-48 48zm351.1 254.6c-2.3-8.2-9.3-14.6-17.8-16.7l-72-16c-10.2-2.3-17.8-11.3-19.5-21.5L336 248h48c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24h-80c-4.4 0-8 3.6-8 8v80c0 6.5 3.9 12.4 10 14.9l37.5 15c15.7 6.3 26.5 21.5 26.5 38.6v30c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-8c0-17.7-14.3-32-32-32s-32 14.3-32 32v8c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-30c0-17.1 10.8-32.3 26.5-38.6l37.5-15c6.1-2.5 10-8.4 10-14.9v-80c0-4.4-3.6-8-8-8h-80c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h48l-9.3 150.4c-1.7 10.2-10.7 17.8-20.9 19.5l-72 16c-8.5 1.9-15.5 8.3-17.8 16.7C32.9 475 43.8 496 64 496h416c20.2 0 31.1-21 25.1-36.4z"/></svg>
-                    Likes - Rs.100/1000
-                </div>
-                <div class="service-option" onclick="selectService('instagram', 'Views - Rs.10 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M288 144c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 240c-52.9 0-96-43.1-96-96s43.1-96 96-96 96 43.1 96 96-43.1 96-96 96zm0-160c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm-192 0c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm384 0c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64z"/></svg>
-                    Views - Rs.10/1000
+                <div class="option" onclick="selectPlatform('youtube')">
+                    <img src="https://img.icons8.com/color/48/000000/youtube-play.png" alt="YouTube">
+                    YouTube
                 </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(1)">Back</button>
                 </div>
             </div>
-            <div class="step" id="step2_tiktok">
-                <p style="font-weight: 500;">TikTok Packages</p>
-                <div class="service-option" onclick="selectService('tiktok', 'Followers - Rs.600 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M96 224c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm448 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm-317.5 213.3L320 480l93.5-42.7C432.8 429.2 448 410.9 448 390.4V272h48v118.4c0 44.2-30.2 83.1-73.7 94.2L320 512l-102.3-27.5c-43.5-11.1-73.7-50-73.7-94.2V272h48v118.4c0 19.5 15.2 37.8 34.5 45.9z"/></svg>
-                    Followers - Rs.600/1000
-                </div>
-                <div class="service-option" onclick="selectService('tiktok', 'Likes - Rs.100 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M104 168C76.6 168 56 147.4 56 120S76.6 72 104 72s48 20.6 48 48-20.6 48-48 48zm351.1 254.6c-2.3-8.2-9.3-14.6-17.8-16.7l-72-16c-10.2-2.3-17.8-11.3-19.5-21.5L336 248h48c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24h-80c-4.4 0-8 3.6-8 8v80c0 6.5 3.9 12.4 10 14.9l37.5 15c15.7 6.3 26.5 21.5 26.5 38.6v30c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-8c0-17.7-14.3-32-32-32s-32 14.3-32 32v8c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-30c0-17.1 10.8-32.3 26.5-38.6l37.5-15c6.1-2.5 10-8.4 10-14.9v-80c0-4.4-3.6-8-8-8h-80c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h48l-9.3 150.4c-1.7 10.2-10.7 17.8-20.9 19.5l-72 16c-8.5 1.9-15.5 8.3-17.8 16.7C32.9 475 43.8 496 64 496h416c20.2 0 31.1-21 25.1-36.4z"/></svg>
-                    Likes - Rs.100/1000
-                </div>
-                <div class="service-option" onclick="selectService('tiktok', 'Views - Rs.10 per 2000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M288 144c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 240c-52.9 0-96-43.1-96-96s43.1-96 96-96 96 43.1 96 96-43.1 96-96 96zm0-160c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm-192 0c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm384 0c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64z"/></svg>
-                    Views - Rs.10/2000
-                </div>
-                <div style="text-align: center;">
-                    <button class="btn-back" onclick="goBack(1)">Back</button>
-                </div>
-            </div>
-            <div class="step" id="step2_youtube">
-                <p style="font-weight: 500;">YouTube Packages</p>
-                <div class="service-option" onclick="selectService('youtube', 'Subscribers - Rs.600 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M96 224c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm448 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm-317.5 213.3L320 480l93.5-42.7C432.8 429.2 448 410.9 448 390.4V272h48v118.4c0 44.2-30.2 83.1-73.7 94.2L320 512l-102.3-27.5c-43.5-11.1-73.7-50-73.7-94.2V272h48v118.4c0 19.5 15.2 37.8 34.5 45.9z"/></svg>
-                    Subscribers - Rs.600/1000
-                </div>
-                <div class="service-option" onclick="selectService('youtube', 'Likes - Rs.500 per 1000')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M104 168C76.6 168 56 147.4 56 120S76.6 72 104 72s48 20.6 48 48-20.6 48-48 48zm351.1 254.6c-2.3-8.2-9.3-14.6-17.8-16.7l-72-16c-10.2-2.3-17.8-11.3-19.5-21.5L336 248h48c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24h-80c-4.4 0-8 3.6-8 8v80c0 6.5 3.9 12.4 10 14.9l37.5 15c15.7 6.3 26.5 21.5 26.5 38.6v30c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-8c0-17.7-14.3-32-32-32s-32 14.3-32 32v8c0 22.1-17.9 40-40 40h-16c-22.1 0-40-17.9-40-40v-30c0-17.1 10.8-32.3 26.5-38.6l37.5-15c6.1-2.5 10-8.4 10-14.9v-80c0-4.4-3.6-8-8-8h-80c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h48l-9.3 150.4c-1.7 10.2-10.7 17.8-20.9 19.5l-72 16c-8.5 1.9-15.5 8.3-17.8 16.7C32.9 475 43.8 496 64 496h416c20.2 0 31.1-21 25.1-36.4z"/></svg>
-                    Likes - Rs.500/1000
+
+            <div class="step" id="step2_business">
+                <p style="font-weight: 500;">Meta Ads Boost Packages</p>
+                <div class="package-grid">
+                    <div class="package-card">
+                        <h3>Basic</h3>
+                        <p class="price">Rs. 3999</p>
+                        <ul>
+                            <li>2 Ads Boosting</li>
+                            <li>5-7 Content Posts</li>
+                            <li>2 Animation Reels</li>
+                            <li>Free Festival Posts</li>
+                        </ul>
+                        <button onclick="selectPackage('Basic Package', 3999)">Place Order</button>
+                    </div>
+                    <div class="package-card">
+                        <h3>Standard</h3>
+                        <p class="price">Rs. 4999</p>
+                        <ul>
+                            <li>3 Ads Boosting</li>
+                            <li>7-10 Content Posts</li>
+                            <li>4 Animation Reels</li>
+                            <li>Free Festival Posts</li>
+                        </ul>
+                        <button onclick="selectPackage('Standard Package', 4999)">Place Order</button>
+                    </div>
+                    <div class="package-card">
+                        <h3>Premium</h3>
+                        <p class="price">Rs. 6999</p>
+                        <ul>
+                            <li>5 Ads Boosting</li>
+                            <li>10-15 Content Posts</li>
+                            <li>6 Animation Reels</li>
+                            <li>Free Festival Posts</li>
+                        </ul>
+                        <button onclick="selectPackage('Premium Package', 6999)">Place Order</button>
+                    </div>
                 </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(1)">Back</button>
@@ -596,100 +995,185 @@
             </div>
 
             <div class="step" id="step3_facebook">
-                <p style="font-weight: 500;">Facebook Package</p>
-                <p id="facebookServiceDisplay"></p>
-                <input type="number" id="facebookQuantity" min="1" placeholder="Enter Quantity" required>
-                <p class="total-amount">Total: <span id="facebookTotalAmount">Rs. 0</span></p>
+                <p style="font-weight: 500;">Facebook Packages</p>
+                <div class="service-option" onclick="selectService('facebook', 'Followers - Rs.600 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/crowd.png" alt="Followers">
+                    Followers - Rs.600/1000
+                </div>
+                <div class="service-option" onclick="selectService('facebook', 'Likes - Rs.500 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/like.png" alt="Likes">
+                    Likes - Rs.500/1000
+                </div>
+                <div class="service-option" onclick="selectService('facebook', 'Views - Rs.150 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/visible.png" alt="Views">
+                    Views - Rs.150/1000
+                </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(2)">Back</button>
-                    <button class="btn-primary" onclick="goToStep4('facebook')">Next</button>
                 </div>
             </div>
             <div class="step" id="step3_instagram">
-                <p style="font-weight: 500;">Instagram Package</p>
-                <p id="instagramServiceDisplay"></p>
-                <input type="number" id="instagramQuantity" min="1" placeholder="Enter Quantity" required>
-                <p class="total-amount">Total: <span id="instagramTotalAmount">Rs. 0</span></p>
+                <p style="font-weight: 500;">Instagram Packages</p>
+                <div class="service-option" onclick="selectService('instagram', 'Followers - Rs.600 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/crowd.png" alt="Followers">
+                    Followers - Rs.600/1000
+                </div>
+                <div class="service-option" onclick="selectService('instagram', 'Likes - Rs.100 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/like.png" alt="Likes">
+                    Likes - Rs.100/1000
+                </div>
+                <div class="service-option" onclick="selectService('instagram', 'Views - Rs.10 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/visible.png" alt="Views">
+                    Views - Rs.10/1000
+                </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(2)">Back</button>
-                    <button class="btn-primary" onclick="goToStep4('instagram')">Next</button>
                 </div>
             </div>
             <div class="step" id="step3_tiktok">
-                <p style="font-weight: 500;">TikTok Package</p>
-                <p id="tiktokServiceDisplay"></p>
-                <input type="number" id="tiktokQuantity" min="1" placeholder="Enter Quantity" required>
-                <p class="total-amount">Total: <span id="tiktokTotalAmount">Rs. 0</span></p>
+                <p style="font-weight: 500;">TikTok Packages</p>
+                <div class="service-option" onclick="selectService('tiktok', 'Followers - Rs.600 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/crowd.png" alt="Followers">
+                    Followers - Rs.600/1000
+                </div>
+                <div class="service-option" onclick="selectService('tiktok', 'Likes - Rs.100 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/like.png" alt="Likes">
+                    Likes - Rs.100/1000
+                </div>
+                <div class="service-option" onclick="selectService('tiktok', 'Views - Rs.10 per 2000')">
+                    <img src="https://img.icons8.com/color/48/000000/visible.png" alt="Views">
+                    Views - Rs.10/2000
+                </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(2)">Back</button>
-                    <button class="btn-primary" onclick="goToStep4('tiktok')">Next</button>
                 </div>
             </div>
             <div class="step" id="step3_youtube">
-                <p style="font-weight: 500;">YouTube Package</p>
-                <p id="youtubeServiceDisplay"></p>
-                <input type="number" id="youtubeQuantity" min="1" placeholder="Enter Quantity" required>
-                <p class="total-amount">Total: <span id="youtubeTotalAmount">Rs. 0</span></p>
+                <p style="font-weight: 500;">YouTube Packages</p>
+                <div class="service-option" onclick="selectService('youtube', 'Subscribers - Rs.600 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/crowd.png" alt="Subscribers">
+                    Subscribers - Rs.600/1000
+                </div>
+                <div class="service-option" onclick="selectService('youtube', 'Likes - Rs.500 per 1000')">
+                    <img src="https://img.icons8.com/color/48/000000/like.png" alt="Likes">
+                    Likes - Rs.500/1000
+                </div>
                 <div style="text-align: center;">
                     <button class="btn-back" onclick="goBack(2)">Back</button>
-                    <button class="btn-primary" onclick="goToStep4('youtube')">Next</button>
                 </div>
             </div>
 
             <div class="step" id="step4_facebook">
+                <p style="font-weight: 500;">Facebook Package</p>
+                <p id="facebookServiceDisplay"></p>
+                <input type="number" id="facebookQuantity" min="100" placeholder="Enter Quantity (Min: 100)" required>
+                <p class="error-message" id="facebookError">Minimum quantity is 100.</p>
+                <p class="total-amount">Total: <span id="facebookTotalAmount">Rs. 0</span></p>
+                <div style="text-align: center;">
+                    <button class="btn-back" onclick="goBack(3)">Back</button>
+                    <button class="btn-primary" id="facebookNextBtn" onclick="goToStep5('facebook')" disabled>Next</button>
+                </div>
+            </div>
+            <div class="step" id="step4_instagram">
+                <p style="font-weight: 500;">Instagram Package</p>
+                <p id="instagramServiceDisplay"></p>
+                <input type="number" id="instagramQuantity" min="100" placeholder="Enter Quantity (Min: 100)" required>
+                <p class="error-message" id="instagramError">Minimum quantity is 100.</p>
+                <p class="total-amount">Total: <span id="instagramTotalAmount">Rs. 0</span></p>
+                <div style="text-align: center;">
+                    <button class="btn-back" onclick="goBack(3)">Back</button>
+                    <button class="btn-primary" id="instagramNextBtn" onclick="goToStep5('instagram')" disabled>Next</button>
+                </div>
+            </div>
+            <div class="step" id="step4_tiktok">
+                <p style="font-weight: 500;">TikTok Package</p>
+                <p id="tiktokServiceDisplay"></p>
+                <input type="number" id="tiktokQuantity" min="100" placeholder="Enter Quantity (Min: 100)" required>
+                <p class="error-message" id="tiktokError">Minimum quantity is 100.</p>
+                <p class="total-amount">Total: <span id="tiktokTotalAmount">Rs. 0</span></p>
+                <div style="text-align: center;">
+                    <button class="btn-back" onclick="goBack(3)">Back</button>
+                    <button class="btn-primary" id="tiktokNextBtn" onclick="goToStep5('tiktok')" disabled>Next</button>
+                </div>
+            </div>
+            <div class="step" id="step4_youtube">
+                <p style="font-weight: 500;">YouTube Package</p>
+                <p id="youtubeServiceDisplay"></p>
+                <input type="number" id="youtubeQuantity" min="100" placeholder="Enter Quantity (Min: 100)" required>
+                <p class="error-message" id="youtubeError">Minimum quantity is 100.</p>
+                <p class="total-amount">Total: <span id="youtubeTotalAmount">Rs. 0</span></p>
+                <div style="text-align: center;">
+                    <button class="btn-back" onclick="goBack(3)">Back</button>
+                    <button class="btn-primary" id="youtubeNextBtn" onclick="goToStep5('youtube')" disabled>Next</button>
+                </div>
+            </div>
+
+            <div class="step" id="step5_facebook">
                 <p style="font-weight: 500;">Complete Payment</p>
-                <p id="facebookStep4Display"></p>
-                <p class="total-amount">Total: <span id="facebookStep4Total"></span></p>
+                <p id="facebookStep5Display"></p>
+                <p class="total-amount">Total: <span id="facebookStep5Total"></span></p>
                 <img src="qr.jpg" alt="QR Code" class="scanner-img">
                 <label>
                     <input type="checkbox" id="facebookPaymentConfirm">
                     I have completed the payment and taken a screenshot
                 </label>
                 <div style="text-align: center;">
-                    <button class="btn-back" onclick="goBack(3)">Back</button>
+                    <button class="btn-back" onclick="goBack(4)">Back</button>
                     <button class="btn-primary" id="facebookSubmitBtn" onclick="submitForm('facebook')" disabled>Submit</button>
                 </div>
             </div>
-            <div class="step" id="step4_instagram">
+            <div class="step" id="step5_instagram">
                 <p style="font-weight: 500;">Complete Payment</p>
-                <p id="instagramStep4Display"></p>
-                <p class="total-amount">Total: <span id="instagramStep4Total"></span></p>
+                <p id="instagramStep5Display"></p>
+                <p class="total-amount">Total: <span id="instagramStep5Total"></span></p>
                 <img src="qr.jpg" alt="QR Code" class="scanner-img">
                 <label>
                     <input type="checkbox" id="instagramPaymentConfirm">
                     I have completed the payment and taken a screenshot
                 </label>
                 <div style="text-align: center;">
-                    <button class="btn-back" onclick="goBack(3)">Back</button>
+                    <button class="btn-back" onclick="goBack(4)">Back</button>
                     <button class="btn-primary" id="instagramSubmitBtn" onclick="submitForm('instagram')" disabled>Submit</button>
                 </div>
             </div>
-            <div class="step" id="step4_tiktok">
+            <div class="step" id="step5_tiktok">
                 <p style="font-weight: 500;">Complete Payment</p>
-                <p id="tiktokStep4Display"></p>
-                <p class="total-amount">Total: <span id="tiktokStep4Total"></span></p>
+                <p id="tiktokStep5Display"></p>
+                <p class="total-amount">Total: <span id="tiktokStep5Total"></span></p>
                 <img src="qr.jpg" alt="QR Code" class="scanner-img">
                 <label>
                     <input type="checkbox" id="tiktokPaymentConfirm">
                     I have completed the payment and taken a screenshot
                 </label>
                 <div style="text-align: center;">
-                    <button class="btn-back" onclick="goBack(3)">Back</button>
+                    <button class="btn-back" onclick="goBack(4)">Back</button>
                     <button class="btn-primary" id="tiktokSubmitBtn" onclick="submitForm('tiktok')" disabled>Submit</button>
                 </div>
             </div>
-            <div class="step" id="step4_youtube">
+            <div class="step" id="step5_youtube">
                 <p style="font-weight: 500;">Complete Payment</p>
-                <p id="youtubeStep4Display"></p>
-                <p class="total-amount">Total: <span id="youtubeStep4Total"></span></p>
+                <p id="youtubeStep5Display"></p>
+                <p class="total-amount">Total: <span id="youtubeStep5Total"></span></p>
                 <img src="qr.jpg" alt="QR Code" class="scanner-img">
                 <label>
                     <input type="checkbox" id="youtubePaymentConfirm">
                     I have completed the payment and taken a screenshot
                 </label>
                 <div style="text-align: center;">
-                    <button class="btn-back" onclick="goBack(3)">Back</button>
+                    <button class="btn-back" onclick="goBack(4)">Back</button>
                     <button class="btn-primary" id="youtubeSubmitBtn" onclick="submitForm('youtube')" disabled>Submit</button>
+                </div>
+            </div>
+
+            <div class="step" id="step3_business">
+                <p style="font-weight: 500;">Complete Business Package Order</p>
+                <p id="businessPackageDisplay"></p>
+                <input type="text" id="businessCustomerName" placeholder="Your Name" required>
+                <input type="tel" id="businessCustomerMobile" placeholder="Your Mobile Number" required>
+                <p class="total-amount">Total: <span id="businessTotalAmount">Rs. 0</span></p>
+                <div style="text-align: center;">
+                    <button class="btn-back" onclick="goBack(2)">Back</button>
+                    <button class="btn-primary" onclick="submitBusinessPackage()">Place Order</button>
                 </div>
             </div>
         </section>
@@ -702,11 +1186,11 @@
             <p class="contact-info">Our team is available 24/7 to assist with your growth needs. Connect with us on social media or send us a message directly.</p>
             <div id="socialButtons">
                 <a href="https://wa.me/9779826660865?text=Hello%20Boost%20Nepal%2C%20I%20have%20a%20query%20about%20your%20services" target="_blank" class="social-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224-99.6 224-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.3-184.1 184.1-184.1 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 54.1 81.2 54.1 130.4 0 101.7-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.2-.2-7.2 0-18.5 2.5-23.5 17.1-5 14.6-5.6 26.9-2.3 32.5 3.3 5.6 14.6 14.2 33.3 39.9 19.3 26.6 39.6 45.9 56.1 56.1 5.8 3.6 13.1 5.7 20.1 5.7 7 0 13.4-2.3 19-7.1 6.5-5.6 8.1-13.3 6.1-20.2z"/></svg>
+                    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp">
                     WhatsApp
                 </a>
                 <a href="https://www.instagram.com/boost_np" target="_blank" class="social-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.8 9.9 67.6 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                    <img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram">
                     Instagram
                 </a>
             </div>
@@ -719,163 +1203,256 @@
     </footer>
 
     <script>
-       let selectedPlatform = '';
-let selectedService = '';
-let totalAmount = 0;
+        let selectedPlatform = '';
+        let selectedService = '';
+        let selectedPackage = '';
+        let totalAmount = 0;
+        let boostType = '';
 
-const pricing = {
-    facebook: {
-        'Followers - Rs.600 per 1000': 600,
-        'Likes - Rs.500 per 1000': 500,
-        'Views - Rs.150 per 1000': 150
-    },
-    instagram: {
-        'Followers - Rs.600 per 1000': 600,
-        'Likes - Rs.100 per 1000': 100,
-        'Views - Rs.10 per 1000': 10
-    },
-    tiktok: {
-        'Followers - Rs.600 per 1000': 600,
-        'Likes - Rs.100 per 1000': 100,
-        'Views - Rs.10 per 2000': 5
-    },
-    youtube: {
-        'Subscribers - Rs.600 per 1000': 600,
-        'Likes - Rs.500 per 1000': 500
-    }
-};
+        const pricing = {
+            facebook: {
+                'Followers - Rs.600 per 1000': 600,
+                'Likes - Rs.500 per 1000': 500,
+                'Views - Rs.150 per 1000': 150
+            },
+            instagram: {
+                'Followers - Rs.600 per 1000': 600,
+                'Likes - Rs.100 per 1000': 100,
+                'Views - Rs.10 per 1000': 10
+            },
+            tiktok: {
+                'Followers - Rs.600 per 1000': 600,
+                'Likes - Rs.100 per 1000': 100,
+                'Views - Rs.10 per 2000': 5
+            },
+            youtube: {
+                'Subscribers - Rs.600 per 1000': 600,
+                'Likes - Rs.500 per 1000': 500
+            },
+            business: {
+                'Basic Package': 3999,
+                'Standard Package': 4999,
+                'Premium Package': 6999
+            }
+        };
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Hamburger menu toggle
-    document.getElementById('hamburger').addEventListener('click', () => {
-        document.getElementById('navMenu').classList.toggle('active');
-    });
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger menu toggle
+            document.getElementById('hamburger').addEventListener('click', () => {
+                document.getElementById('navMenu').classList.toggle('active');
+            });
 
-    // Add event listeners for quantity inputs and payment confirmation checkboxes
-    ['facebook', 'instagram', 'tiktok', 'youtube'].forEach(platform => {
-        const input = document.getElementById(`${platform}Quantity`);
-        if (input) input.addEventListener('input', () => updateTotal(platform));
-        const checkbox = document.getElementById(`${platform}PaymentConfirm`);
-        const submitBtn = document.getElementById(`${platform}SubmitBtn`);
-        if (checkbox && submitBtn) {
-            checkbox.addEventListener('change', () => {
-                submitBtn.disabled = !checkbox.checked;
+            // Add event listeners for quantity inputs and payment confirmation checkboxes
+            ['facebook', 'instagram', 'tiktok', 'youtube'].forEach(platform => {
+                const input = document.getElementById(`${platform}Quantity`);
+                const nextBtn = document.getElementById(`${platform}NextBtn`);
+                const errorMsg = document.getElementById(`${platform}Error`);
+                if (input) {
+                    input.addEventListener('input', () => {
+                        const quantity = parseInt(input.value) || 0;
+                        if (quantity > 0 && quantity < 100) {
+                            errorMsg.classList.add('active');
+                            nextBtn.disabled = true;
+                        } else {
+                            errorMsg.classList.remove('active');
+                            nextBtn.disabled = quantity <= 0;
+                            updateTotal(platform);
+                        }
+                    });
+                }
+                const checkbox = document.getElementById(`${platform}PaymentConfirm`);
+                const submitBtn = document.getElementById(`${platform}SubmitBtn`);
+                if (checkbox && submitBtn) {
+                    checkbox.addEventListener('change', () => {
+                        submitBtn.disabled = !checkbox.checked;
+                    });
+                }
+            });
+
+            // Create particles for background animation
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = Math.random() * 5 + 5 + 's';
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                document.querySelector('.particles').appendChild(particle);
+                setTimeout(() => particle.remove(), 10000);
+            }
+
+            setInterval(createParticle, 500);
+        });
+
+        function showSection(section) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(`${section}Section`).classList.add('active');
+            document.getElementById('navMenu').classList.remove('active');
+            if (section === 'booster') resetForm();
+            document.getElementById('socialButtons').style.display = section === 'contact' ? 'block' : 'none';
+        }
+
+        function resetForm() {
+            selectedPlatform = '';
+            selectedService = '';
+            selectedPackage = '';
+            totalAmount = 0;
+            boostType = '';
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step1').classList.add('active');
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.toggle('active', parseInt(step.dataset.step) === 1);
+            });
+            ['facebook', 'instagram', 'tiktok', 'youtube'].forEach(platform => {
+                const input = document.getElementById(`${platform}Quantity`);
+                if (input) input.value = '';
+                const checkbox = document.getElementById(`${platform}PaymentConfirm`);
+                if (checkbox) checkbox.checked = false;
+                const submitBtn = document.getElementById(`${platform}SubmitBtn`);
+                if (submitBtn) submitBtn.disabled = true;
+                const nextBtn = document.getElementById(`${platform}NextBtn`);
+                if (nextBtn) nextBtn.disabled = true;
+                const errorMsg = document.getElementById(`${platform}Error`);
+                if (errorMsg) errorMsg.classList.remove('active');
+                const display = document.getElementById(`${platform}ServiceDisplay`);
+                if (display) display.textContent = '';
+                const total = document.getElementById(`${platform}TotalAmount`);
+                if (total) total.textContent = 'Rs. 0';
+                const step5Display = document.getElementById(`${platform}Step5Display`);
+                if (step5Display) step5Display.textContent = '';
+                const step5Total = document.getElementById(`${platform}Step5Total`);
+                if (step5Total) step5Total.textContent = 'Rs. 0';
+            });
+            document.getElementById('businessPackageDisplay').textContent = '';
+            document.getElementById('businessCustomerName').value = '';
+            document.getElementById('businessCustomerMobile').value = '';
+            document.getElementById('businessTotalAmount').textContent = 'Rs. 0';
+        }
+
+        function selectBoostType(type) {
+            boostType = type;
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step2_${type}`).classList.add('active');
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.toggle('active', parseInt(step.dataset.step) === 2);
             });
         }
-    });
-});
 
-function showSection(section) {
-    // Show the selected section and hide others
-    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-    document.getElementById(`${section}Section`).classList.add('active');
-    document.getElementById('navMenu').classList.remove('active');
-    if (section === 'booster') resetForm();
-    document.getElementById('socialButtons').style.display = section === 'contact' ? 'block' : 'none';
-}
+        function selectPlatform(platform) {
+            selectedPlatform = platform;
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step3_${platform}`).classList.add('active');
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.toggle('active', parseInt(step.dataset.step) === 3);
+            });
+        }
 
-function resetForm() {
-    // Reset form state
-    selectedPlatform = '';
-    selectedService = '';
-    totalAmount = 0;
-    document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
-    document.getElementById('step1').classList.add('active');
-    document.querySelectorAll('.progress-step').forEach(step => {
-        step.classList.toggle('active', parseInt(step.dataset.step) === 1);
-    });
-    ['facebook', 'instagram', 'tiktok', 'youtube'].forEach(platform => {
-        const input = document.getElementById(`${platform}Quantity`);
-        if (input) input.value = '';
-        const checkbox = document.getElementById(`${platform}PaymentConfirm`);
-        if (checkbox) checkbox.checked = false;
-        const submitBtn = document.getElementById(`${platform}SubmitBtn`);
-        if (submitBtn) submitBtn.disabled = true;
-        const display = document.getElementById(`${platform}ServiceDisplay`);
-        if (display) display.textContent = '';
-        const total = document.getElementById(`${platform}TotalAmount`);
-        if (total) total.textContent = 'Rs. 0';
-        const step4Display = document.getElementById(`${platform}Step4Display`);
-        if (step4Display) step4Display.textContent = '';
-        const step4Total = document.getElementById(`${platform}Step4Total`);
-        if (step4Total) step4Total.textContent = 'Rs. 0';
-    });
-}
+        function selectService(platform, service) {
+            selectedService = service;
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step4_${platform}`).classList.add('active');
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.toggle('active', parseInt(step.dataset.step) === 4);
+            });
+            document.getElementById(`${platform}ServiceDisplay`).textContent = service;
+            updateTotal(platform);
+        }
 
-function selectPlatform(platform) {
-    // Select platform and move to step 2
-    selectedPlatform = platform;
-    document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
-    document.getElementById(`step2_${platform}`).classList.add('active');
-    document.querySelectorAll('.progress-step').forEach(step => {
-        step.classList.toggle('active', parseInt(step.dataset.step) === 2);
-    });
-}
+        function selectPackage(packageName, price) {
+            selectedPackage = packageName;
+            totalAmount = price;
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step3_business').classList.add('active');
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.toggle('active', parseInt(step.dataset.step) === 3);
+            });
+            document.getElementById('businessPackageDisplay').textContent = packageName;
+            document.getElementById('businessTotalAmount').textContent = `Rs. ${price}`;
+        }
 
-function selectService(platform, service) {
-    // Select service and move to step 3
-    selectedService = service;
-    document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
-    document.getElementById(`step3_${platform}`).classList.add('active');
-    document.querySelectorAll('.progress-step').forEach(step => {
-        step.classList.toggle('active', parseInt(step.dataset.step) === 3);
-    });
-    document.getElementById(`${platform}ServiceDisplay`).textContent = service;
-    updateTotal(platform);
-}
+        function updateTotal(platform) {
+            const quantity = parseInt(document.getElementById(`${platform}Quantity`).value) || 0;
+            const errorMsg = document.getElementById(`${platform}Error`);
+            const nextBtn = document.getElementById(`${platform}NextBtn`);
+            if (quantity > 0 && quantity < 100) {
+                errorMsg.classList.add('active');
+                nextBtn.disabled = true;
+                document.getElementById(`${platform}TotalAmount`).textContent = 'Rs. 0';
+                return;
+            } else {
+                errorMsg.classList.remove('active');
+                nextBtn.disabled = quantity <= 0;
+            }
+            const rate = pricing[platform][selectedService];
+            const multiplier = selectedService.includes('Views - Rs.10 per 2000') ? 2000 : 1000;
+            totalAmount = quantity > 0 ? (quantity * rate) / multiplier : 0;
+            document.getElementById(`${platform}TotalAmount`).textContent = `Rs. ${totalAmount}`;
+        }
 
-function updateTotal(platform) {
-    // Calculate and display total amount based on quantity
-    const quantity = parseInt(document.getElementById(`${platform}Quantity`).value) || 0;
-    const rate = pricing[platform][selectedService];
-    const multiplier = selectedService.includes('Views - Rs.10 per 2000') ? 2000 : 1000;
-    totalAmount = (quantity * rate) / multiplier;
-    document.getElementById(`${platform}TotalAmount`).textContent = `Rs. ${totalAmount}`;
-}
+        function goToStep5(platform) {
+            const quantity = parseInt(document.getElementById(`${platform}Quantity`).value);
+            const errorMsg = document.getElementById(`${platform}Error`);
+            if (!quantity || quantity < 100) {
+                errorMsg.classList.add('active');
+                return;
+            }
+            errorMsg.classList.remove('active');
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step5_${platform}`).classList.add('active');
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.toggle('active', parseInt(step.dataset.step) === 5);
+            });
+            document.getElementById(`${platform}Step5Display`).textContent = `${selectedService} x ${quantity}`;
+            document.getElementById(`${platform}Step5Total`).textContent = `Rs. ${totalAmount}`;
+        }
 
-function goToStep4(platform) {
-    // Move to step 4 and display order summary
-    const quantity = document.getElementById(`${platform}Quantity`).value;
-    if (!quantity || quantity <= 0) {
-        alert('Please enter a valid quantity.');
-        return;
-    }
-    document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
-    document.getElementById(`step4_${platform}`).classList.add('active');
-    document.querySelectorAll('.progress-step').forEach(step => {
-        step.classList.toggle('active', parseInt(step.dataset.step) === 4);
-    });
-    document.getElementById(`${platform}Step4Display`).textContent = `${selectedService} x ${quantity}`;
-    document.getElementById(`${platform}Step4Total`).textContent = `Rs. ${totalAmount}`;
-}
+        function goBack(step) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.progress-step').forEach(s => {
+                s.classList.toggle('active', parseInt(s.dataset.step) === step);
+            });
+            if (step === 1) {
+                document.getElementById('step1').classList.add('active');
+                selectedPlatform = '';
+                selectedService = '';
+                selectedPackage = '';
+                totalAmount = 0;
+                boostType = '';
+            } else if (step === 2) {
+                document.getElementById(`step2_${boostType}`).classList.add('active');
+                selectedService = '';
+                selectedPackage = '';
+                totalAmount = 0;
+            } else if (step === 3 && boostType === 'personal') {
+                document.getElementById(`step3_${selectedPlatform}`).classList.add('active');
+            } else if (step === 3 && boostType === 'business') {
+                document.getElementById('step2_business').classList.add('active');
+            } else if (step === 4) {
+                document.getElementById(`step4_${selectedPlatform}`).classList.add('active');
+            }
+        }
 
-function goBack(step) {
-    // Navigate back to previous step
-    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.progress-step').forEach(s => {
-        s.classList.toggle('active', parseInt(s.dataset.step) === step);
-    });
-    if (step === 1) {
-        document.getElementById('step1').classList.add('active');
-        selectedPlatform = '';
-        selectedService = '';
-        totalAmount = 0;
-    } else if (step === 2) {
-        document.getElementById(`step2_${selectedPlatform}`).classList.add('active');
-        selectedService = '';
-        totalAmount = 0;
-    } else if (step === 3) {
-        document.getElementById(`step3_${selectedPlatform}`).classList.add('active');
-    }
-}
+        function submitForm(platform) {
+            const quantity = document.getElementById(`${platform}Quantity`).value;
+            const message = `New Order:\nPlatform: ${platform.charAt(0).toUpperCase() + platform.slice(1)}\nService: ${selectedService}\nQuantity: ${quantity}\nTotal: Rs. ${totalAmount}\nPayment: Completed (Screenshot to be sent)`;
+            const whatsappUrl = `https://wa.me/9779826660865?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            alert('Thank you for your order! Please send the payment screenshot via WhatsApp.');
+            resetForm();
+        }
 
-function submitForm(platform) {
-    // Submit order details via WhatsApp
-    const quantity = document.getElementById(`${platform}Quantity`).value;
-    const message = `New Order:\nPlatform: ${platform.charAt(0).toUpperCase() + platform.slice(1)}\nService: ${selectedService}\nQuantity: ${quantity}\nTotal: Rs. ${totalAmount}\nPayment: Completed (Screenshot to be sent)`;
-    const whatsappUrl = `https://wa.me/9779826660865?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-    alert('Thank you for your order! Please send the payment screenshot via WhatsApp.');
-    resetForm();
-}
-</script>
+        function submitBusinessPackage() {
+            const name = document.getElementById('businessCustomerName').value;
+            const mobile = document.getElementById('businessCustomerMobile').value;
+            if (!name || !mobile) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            const message = `New Business Package Order:\nPackage: ${selectedPackage}\nTotal: Rs. ${totalAmount}\nName: ${name}\nMobile: ${mobile}`;
+            const whatsappUrl = `https://wa.me/9779826660865?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            alert('Thank you for your order! We will contact you soon.');
+            resetForm();
+        }
+    </script>
+</body>
+</html>
